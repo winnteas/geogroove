@@ -7,10 +7,14 @@ const SearchBar = (props) => {
   const theme = useTheme();
 
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', paddingTop: 15, paddingBottom: 10, paddingLeft: 20, paddingRight: 20, borderRadius: 100 }}>
+    <View style={{
+      flexDirection: 'row', alignItems: 'center', width: '100%', paddingTop: 15, paddingBottom: 10, paddingLeft: 20, paddingRight: 20, borderRadius: 100
+    }}>
       <TextInput
-        label={props.label}
+        label={props.label
+        }
         value={text}
+        mode='outlined'
         onChangeText={text => setText(text)}
         textColor={theme.colors.darkGrey}
         underlineColor='grey'
@@ -23,7 +27,7 @@ const SearchBar = (props) => {
           />
         )} />}
       />
-    </View>
+    </View >
 
   );
 };
