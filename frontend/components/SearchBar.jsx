@@ -21,7 +21,7 @@ const SearchBar = (props) => {
         value={text}
         onChangeText={text => setText(text)}
         textColor={theme.colors.darkGrey}
-        underlineColor='black'
+        underlineColor='grey'
         activeUnderlineColor={theme.colors.darkGrey}
         style={{ width: '100%' }}
         left={<TextInput.Icon icon={() => (
@@ -31,7 +31,7 @@ const SearchBar = (props) => {
           />
         )} />}
       />
-    </View>
+    </View >
 
   );
 };

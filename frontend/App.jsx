@@ -18,10 +18,11 @@ import {
 const theme = {
   ...DefaultTheme,
   colors: {
+    ...DefaultTheme.colors,
     fontColour: '#6f6f6f',
     darkGrey: '#1A1A1A',
-    background: '#F2F2F2',
     onSurfaceVariant: 'grey',
+    background: '#F2F2F2',
   },
 };
 
