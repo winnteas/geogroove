@@ -58,13 +58,13 @@ def redirect_page():
     session[TOKEN_INFO] = token_info
     return redirect(FRONTEND_URL)
 
-def get_token():
+def get_access_token():
     token_info = session.get(TOKEN_INFO, None)
     return token_info
 
 # @app.route("/get_access_token")
 # def get_access_token():
-#     token_info = get_token()
+#     token_info = get_access_token()
 #     return token_info['access_token']
     # sp = spotipy.Spotify(auth=token_info['access_token'])
     # return sp.current_user_saved_tracks(limit=50, offset=0)
