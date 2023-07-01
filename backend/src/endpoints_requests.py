@@ -1,12 +1,12 @@
 import requests, json
 
-from .access_token import get_access_token
+import access_token
 
 def get_requests(url, body):
   resp = requests.get(
     url,
     headers={
-        "Authorization": f"Bearer {get_access_token()}"
+        "Authorization": f"Bearer {access_token.get_access_token()}"
     },
     params=body
   )

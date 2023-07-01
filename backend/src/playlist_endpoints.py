@@ -1,4 +1,4 @@
-from .endpoints_requests import get_requests, post_requests, put_requests
+from endpoints_requests import get_requests, post_requests, put_requests
 
 def create_playlist(user_id, playlist_name):
   url=f"https://api.spotify.com/v1/users/{user_id}/playlists"
