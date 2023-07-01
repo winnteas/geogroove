@@ -14,18 +14,6 @@ const GOOGLE_API_KEY = "AIzaSyCZLH-hzaS2XL-lBu8FR6D2I5Tgv1N37s8";
 
 const Question2 = ({navigation}) => {
   const [location, setLocation] = React.useState({ latitude: -33.917348, longitude: 151.231262 })
-
-  //-33.91683313334133, 151.23093764668033
-
-  // React.useEffect(() => {
-  //   const position = Geolocation.getCurrentPosition();
-
-  //   setLocation({
-  //     latitude: position.coords.latitude,
-  //     longitude: position.coords.longitude
-  //   });
-  // }, []);
-
   return (
       <View style={styles.pageContainer}>
           <View style={styles.container}>
@@ -70,6 +58,10 @@ const Question2 = ({navigation}) => {
       
               <MapView
                 provider={PROVIDER_GOOGLE}
+                initialRegion={{
+                  latitude: location.latitude,
+                  longitude: location.longitude
+                }}
                 region={{
                   latitude: location.latitude,
                   longitude: location.longitude
