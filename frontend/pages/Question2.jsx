@@ -124,4 +124,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Question2
+export default Question2;

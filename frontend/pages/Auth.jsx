@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     subheading: {
       color: '#808080',
       width: '75%',
-      fontSize: '15pt',
+      fontSize: 15,
       textAlign: 'center',
       marginTop: 10,
       marginBottom: 30
