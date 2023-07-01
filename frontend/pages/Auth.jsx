@@ -19,18 +19,21 @@ const Landing = ({navigation}) => {
             <Text style={styles.subheading}>
               Connect to your Spotify to get personalised recommendations.
             </Text>
-            <PrimaryButton
-                title="Accept"
-                onPress={() =>
-                    navigation.navigate('Question1')
-                }
-            />
-            <SecondaryButton
-                title="No thanks"
-                onPress={() =>
-                    navigation.navigate('Question1')
-                }
-            />
+
+            <View style={styles.buttonContainer}>
+              <SecondaryButton
+                  title="No Thanks"
+                  onPress={() =>
+                      navigation.navigate('Question1')
+                  }
+              />
+              <PrimaryButton
+                  title="Accept"
+                  onPress={() =>
+                      navigation.navigate('Question1')
+                  }
+              />
+            </View>
         </View>
     )
 }
@@ -65,6 +68,10 @@ const styles = StyleSheet.create({
       width: "55%",
       height: '7.6%',
       marginBottom: 20
+    },
+    buttonContainer: {
+      flex: 0,
+      flexDirection: 'row'
     }
   });
 export default Landing
