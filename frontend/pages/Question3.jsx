@@ -12,10 +12,10 @@ const Question2 = ({ navigation }) => {
           <Image source={ProgressBar} style={styles.progress}></Image>
         </View>
         <StatusBar style="auto" />
-        <Text>Pick your favourite genres</Text>
-        <View style={{ width: '100%', padding: 10 }}>
-          <SearchBar label='Find a genre' />
-        </View>
+        <Text style={styles.titleContainer}>Pick your favourite genres</Text>
+        <SearchBar label='Find a genre' />
+        <Text style={styles.titleContainer}>Add your friends</Text>
+        <SearchBar label='Add username' />
         <Button
           title="Continue"
           onPress={() =>
@@ -44,7 +44,10 @@ const styles = StyleSheet.create({
   barContainer: {
     top: -15,
     alignItems: 'center'
-  }
+  },
+  titleContainer: {
+    alignItems: 'center'
+  },
 });
 
 export default Question2
