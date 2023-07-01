@@ -19,7 +19,7 @@ const theme = {
   colors: {
     fontColour: '#6f6f6f',
     darkGrey: '#1A1A1A',
-    background: '#F2F2F2',
+    lightGrey: '#F2F2F2',
     onSurfaceVariant: 'grey',
   },
 };
