@@ -12,9 +12,9 @@ const Question2 = ({ navigation }) => {
           <Image source={ProgressBar} style={styles.progress}></Image>
         </View>
         <StatusBar style="auto" />
-        <Text style={styles.titleContainer}>Pick your favourite genres</Text>
+        <Text style={styles.title}>Pick your favourite genres</Text>
         <SearchBar label='Find a genre' />
-        <Text style={styles.titleContainer}>Add your friends</Text>
+        <Text style={styles.title}>Add your friends</Text>
         <SearchBar label='Add username' />
         <Button
           title="Continue"
@@ -45,8 +45,10 @@ const styles = StyleSheet.create({
     top: -15,
     alignItems: 'center'
   },
-  titleContainer: {
-    alignItems: 'center'
+  title: {
+    fontSize: 25,
+    marginTop: 10,
+    padding: 10
   },
 });
 
