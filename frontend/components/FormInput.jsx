@@ -7,8 +7,9 @@ const FormInput = (props) => {
   const [text, setText] = React.useState("");
 
   return (
-    <View style={{ width: '100%', padding: 15 }}>
+    <View style={{ width: 300, padding: 15 }}>
       <TextInput
+        mode='outlined'
         label={props.label}
         value={text}
         onChangeText={text => setText(text)}

@@ -7,14 +7,18 @@ const SearchBar = (props) => {
   const theme = useTheme();
 
   return (
-    <View style={{
-      flexDirection: 'row', alignItems: 'center', width: '100%', paddingTop: 15, paddingBottom: 10, paddingLeft: 20, paddingRight: 20, borderRadius: 100
-    }}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', width: 300, paddingTop: 15, paddingBottom: 10, paddingLeft: 20, paddingRight: 20, borderRadius: 100 }}>
+      {/* <View style={{
+        position: "absolute",
+        zIndex: 1,
+        backgroundColor: theme.colors.background
+      }}>
+        <Image style={{ backgroundColor: theme.colors.background }} source={require('../assets/search-icon.png')} />
+      </View> */}
       <TextInput
-        label={props.label
-        }
+        mode="outlined"
+        label={props.label}
         value={text}
-        mode='outlined'
         onChangeText={text => setText(text)}
         textColor={theme.colors.darkGrey}
         underlineColor='grey'
