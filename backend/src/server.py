@@ -5,6 +5,7 @@ import time
 import json
 from flask import Flask, request, send_from_directory
 from flask_cors import CORS
+from backend.src import location
 
 from src import config
 
@@ -44,6 +45,10 @@ conn = None
 #     ret = auth.logout(data['token'])
     
 #     return json.dumps(ret)
+
+@APP.route("/location/retrieve/v1", methods=['GET'])
+def location_retrieve():
+    return json.dumps(location.retrieve())
 
 
 if __name__ == "__main__":
