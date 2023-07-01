@@ -34,20 +34,15 @@ def hello_world():
 
 ##### AUTH ENDPOINTS #####
 
+scope_options = "user-library-read playlist-modify-private playlist-modify-public user-top-read user-read-recently-played user-library-read user-library-modify playlist-read-private playlist-read-collaborative"
+
 def create_spotify_oauth():
     return SpotifyOAuth(
         client_id=CLIENT_ID,
         client_secret=CLIENT_SECRET,
         redirect_uri=url_for('redirect_page', _external=True),
-        scope="user-library-read"
+        scope=scope_options
     )
-
-auth_headers = {
-    "client_id": CLIENT_ID,
-    "response_type": "code",
-    "redirect_uri": FRONTEND_URL,
-    "scope": "user-library-read"
-}
 
 @app.route("/auth/login")
 def auth_prompt():
@@ -164,25 +159,3 @@ def spotify_get_user():
 @app.route("/location/retrieve/v1", methods=['GET'])
 def location_retrieve():
     return json.dumps(retrieve())
-
-# @app.route("/prompt_auth", methods=['GET'])
-# def prompt_auth():
-#     state = generate_random_string(16)
-#     scope = 'user-read-private user-read-email'
-
-#     params = {
-#         'response_type': 'code',
-#         'client_id': CLIENT_ID,
-#         'scope': scope,
-#         'redirect_uri': FRONTEND_URL,
-#         'state': state
-#     }
-
-#     query_string = urllib.parse.urlencode(params)
-#     authorization_url = f'https://accounts.spotify.com/authorize?client_id={CLIENT_ID}&redirect_uri={FRONTEND_URL}' + query_string
-
-#     return redirect(authorization_url)
-
-# def generate_random_string(length):
-#     letters = string.ascii_letters + string.digits
-#     return ''.join(random.choice(letters) for _ in range(length))
