@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect } from "react";;
 import {
   Image,
   StyleSheet,
@@ -15,81 +15,27 @@ import Partying from "../assets/partying.png";
 import ProgressBar from "../components/ProgressBar1.png";
 import PrimaryButton from "../ui-kit/primary-btn";
 
-const Question1 = ({ navigation }) => {
-  const [selected, setSelected] = React.useState("");
-
-  const handlePress = (index) => {
-    if (selected === index) {
-      setSelected(null);
-    } else {
-      setSelected(index);
-    }
-  };
-  const isBoxSelected = (index) => {
-    return selected === index ? styles.selectedBorder : styles.defaultBorder;
-  };
-  return (
-    <View style={styles.pageContainer}>
-      <View style={styles.barContainer}>
-        <Image source={ProgressBar} style={styles.progress}></Image>
-      </View>
-      <Text style={styles.title}>What are you up to?</Text>
-      <View style={styles.container}>
-        <View style={styles.selectBox}>
-          <View style={styles.activityContainer}>
-            <TouchableOpacity
-              style={styles.pressableContainer}
-              onPress={() => handlePress('Walking')}
-            >
-              <View style={[styles.imageContainer, isBoxSelected('Walking')]}>
-                <Image source={Walking} style={styles.activity1} />
-                <Text>Walking</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.activityContainer}>
-            <TouchableOpacity
-              style={styles.pressableContainer}
-              onPress={() => handlePress('Driving')}
-            >
-              <View style={[styles.imageContainer, isBoxSelected('Driving')]}>
-                <Image source={Driving} style={styles.activity2} />
-                <Text>Driving</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.activityContainer}>
-            <TouchableOpacity
-              style={styles.pressableContainer}
-              onPress={() => handlePress('Hiking')}
-            >
-              <View style={[styles.imageContainer, isBoxSelected('Hiking')]}>
-                <Image source={Hiking} style={styles.activity3} />
-                <Text>Hiking</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.activityContainer}>
-            <TouchableOpacity
-              style={styles.pressableContainer}
-              onPress={() => handlePress('Partying')}
-            >
-              <View style={[styles.imageContainer, isBoxSelected('Partying')]}>
-                <Image source={Partying} style={styles.activity4} />
-                <Text>Partying</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
+  
+const Question1 = ({navigation}) => {
+    const [selected, setSelected] = React.useState("");
+    return (
+        <View style={styles.pageContainer}>
+            <View style={styles.barContainer}>
+            <Image source={ProgressBar} style={styles.progress}></Image>
+            </View> 
+            <View style={styles.container}>
+                <Text>What are you up to?</Text>
+                <Button
+                    title="Continue"
+                    onPress={() =>
+                        navigation.navigate('Question2')
+                    }
+                />
+                <StatusBar style="auto" />
+            </View>
         </View>
-        <PrimaryButton
-          title="Continue"
-          onPress={() => navigation.navigate("Question2")}
-        />
-        <StatusBar style="auto" />
-      </View>
-    </View>
-  );
-};
+    )
+}
 
 const styles = StyleSheet.create({
   pageContainer: {
