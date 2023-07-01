@@ -1,14 +1,64 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, Linking } from 'react-native';
 import SecondaryButton from '../ui-kit/secondary-btn';
 import logo from '../assets/geogroove-transparent.gif';
 import spotify from '../assets/spotify.png';
 import PrimaryButton from '../ui-kit/primary-btn';
 
-const BACKEND_URL = 'http://localhost:5000/auth/login';
+import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
+
+import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from '@env';
+
+const CLIENT_ID = SPOTIFY_CLIENT_ID;
+const CLIENT_SECRET = SPOTIFY_CLIENT_SECRET;
 
 const Landing = ({ navigation }) => {
+  const authEndPoint = 'https://accounts.spotify.com/authorize';
+  const redirectUri = 'exp://noenmik.anonymous.19000.exp.direct';
+  const scopes = [
+    'user-library-read',
+    'playlist-modify-private',
+    'playlist-modify-public',
+    'user-top-read',
+    'user-read-recently-played',
+    'user-library-read',
+    'user-library-modify',
+    'playlist-read-private',
+    'playlist-read-collaborative',
+  ];
+
+  const spotifyCredentials = {
+    clientId: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    redirectUri: redirectUri,
+  };
+
+  // Endpoint
+  const discovery = {
+    authorizationEndpoint: 'https://accounts.spotify.com/authorize',
+    tokenEndpoint: 'https://accounts.spotify.com/api/token',
+  };
+
+  const [request, response, promptAsync] = useAuthRequest(
+    {
+      clientId: CLIENT_ID,
+      scopes: scopes,
+      // In order to follow the "Authorization Code Flow" to fetch token after authorizationEndpoint
+      // this must be set to false
+      usePKCE: false,
+      // For usage in managed apps using the proxy
+      redirectUri: redirectUri,
+    },
+    discovery
+  );
+
+  const loginUrl = `${authEndPoint}?client_id=${
+    spotifyCredentials.clientId
+  }&redirect_uri=${redirectUri}&scope=${scopes.join(
+    '%20'
+  )}&response_type=token&show_dialog=true`;
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -30,17 +80,7 @@ const Landing = ({ navigation }) => {
         <PrimaryButton
           title="Accept"
           onPress={() => {
-            fetch(BACKEND_URL, {
-              mode: 'cors',
-              headers: {
-                'Content-Type': 'application/json',
-                // Accept: 'application/json',
-              },
-            }).then((response) => {
-              console.log(response);
-              // window.location.href = response.url;
-            });
-            navigation.navigate('Question1');
+            promptAsync();
           }}
         />
       </View>
