@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
 
     subheading: {
       color: '#808080',
-      fontSize: '20pt',
+      fontSize: 20,
       marginTop: 10,
       marginBottom: 30
     },
