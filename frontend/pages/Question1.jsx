@@ -14,28 +14,63 @@ import Hiking from "../assets/hiking.png";
 import Partying from "../assets/partying.png";
 import ProgressBar from "../components/ProgressBar1.png";
 import PrimaryButton from "../ui-kit/primary-btn";
+import ListActivities from "../components/ListActivities";
 
-  
-const Question1 = ({navigation}) => {
-    const [selected, setSelected] = React.useState("");
-    return (
-        <View style={styles.pageContainer}>
-            <View style={styles.barContainer}>
-            <Image source={ProgressBar} style={styles.progress}></Image>
-            </View> 
-            <View style={styles.container}>
-                <Text>What are you up to?</Text>
-                <Button
-                    title="Continue"
-                    onPress={() =>
-                        navigation.navigate('Question2')
-                    }
-                />
-                <StatusBar style="auto" />
-            </View>
-        </View>
-    )
-}
+const Question1 = ({ navigation }) => {
+  const [selected, setSelected] = React.useState("");
+
+  const handlePress = (Activity) => {
+    if (selected === Activity) {
+      setSelected(null);
+    } else {
+      setSelected(Activity);
+    }
+  };
+
+  activities = [
+    {
+      activity: "Walking",
+      image: Walking,
+      tintColor: "#DDB6B6",
+    },
+    {
+      activity: "Driving",
+      image: Driving,
+      tintColor: "#AAD8E7",
+    },
+    {
+      activity: "Hiking",
+      image: Hiking,
+      tintColor: "#EAAC89",
+    },
+    {
+      activity: "Partying",
+      image: Partying,
+      tintColor: "#A59BE7",
+    },
+  ];
+
+  return (
+    <View style={styles.pageContainer}>
+      <View style={styles.barContainer}>
+        <Image source={ProgressBar} style={styles.progress}></Image>
+      </View>
+      <Text style={styles.title}>What are you up to?</Text>
+      <View style={styles.container}>
+        <ListActivities
+          activities={activities}
+          selectedActivity={selected}
+          handlePress={handlePress}
+        />
+        <PrimaryButton
+          title="Continue"
+          onPress={() => navigation.navigate("Question2")}
+        />
+        <StatusBar style="auto" />
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   pageContainer: {
@@ -48,64 +83,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 40,
     paddingHorizontal: 20,
-  },
-  selectBox: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexWrap: "wrap",
-    flexDirection: "row",
-    width: "100%",
-    height: "60%",
-    gap: 20,
-  },
-  activityContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "45%",
-    aspectRatio: "1 / 1",
-  },
-  pressableContainer: {
-    width: "100%",
-    height: "100%",
-  },
-  imageContainer: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 10,
-    borderRadius: 10,
-  },
-  activity1: {
-    width: "60%",
-    height: "60%",
-    tintColor: "#DDB6B6",
-  },
-  activity2: {
-    width: "60%",
-    height: "60%",
-    tintColor: "#AAD8E7",
-  },
-  activity3: {
-    width: "60%",
-    height: "60%",
-    tintColor: "#EAAC89",
-  },
-  activity4: {
-    width: "60%",
-    height: "60%",
-    tintColor: "#A59BE7",
-  },
-  defaultBorder: {
-    borderWidth: 2,
-    borderColor: "#e5e5e5",
-  },
-  selectedBorder: {
-    borderWidth: 2,
-    borderColor: "#e5e5e5",
-    backgroundColor: "#e5e5e5",
   },
   progress: {
     width: 330,
