@@ -1,13 +1,14 @@
 # to run: flask --app server2 run
 
-from flask import Flask, redirect, request, url_for, session
+from flask import Flask, redirect, request, url_for, session, jsonify, make_response
+from flask_cors import CORS, cross_origin
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-from .location import retrieve
-from .item_endpoints import *
-from .playlist_endpoints import *
-from .user_endpoints import *
+from location import retrieve
+from item_endpoints import *
+from playlist_endpoints import *
+from user_endpoints import *
 import json
 import random
 import string
@@ -21,9 +22,11 @@ load_dotenv()
 CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
 
-FRONTEND_URL = "http://localhost:3000/callback"
+FRONTEND_URL = "http://localhost:19006/"
 
 app = Flask(__name__)
+# CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 app.secret_key = secrets.token_hex(16)
 app.config['SESSION_COOKIE_NAME'] = 'Brians Cookie'
 TOKEN_INFO = "token_info"
@@ -50,6 +53,7 @@ def create_spotify_oauth():
     )
 
 @app.route("/auth/login")
+# @cross_origin()
 def auth_prompt():
     session.clear()
     sp_oauth = create_spotify_oauth()
@@ -57,7 +61,15 @@ def auth_prompt():
     print(auth_url)
     return redirect(auth_url)
 
+@app.route("/get_access_token_from_code/<code>")
+def get_access_token_from_code(code):
+    sp_oauth = create_spotify_oauth()
+    session.clear()
+    token_info = sp_oauth.get_access_token(code)
+    return token_info['access_token']
+
 @app.route("/redirect")
+# @cross_origin()
 def redirect_page():
     sp_oauth = create_spotify_oauth()
     session.clear()
@@ -75,7 +87,7 @@ def auth_logout():
     session.pop(TOKEN_INFO, None)
     session.clear()
     spotify_logout_url = "https://accounts.spotify.com/logout"
-    next_url = "http://127.0.0.1:5000/"
+    next_url = "http://localhost:5000/"
     logout_url = f"{spotify_logout_url}?client_id={CLIENT_ID}&redirect_uri={next_url}"
     return redirect(logout_url)
 
@@ -164,3 +176,6 @@ def spotify_get_user():
 @app.route("/location/retrieve/v1", methods=['GET'])
 def location_retrieve():
     return json.dumps(retrieve())
+
+if __name__ == '__main__':
+    app.run(host="localhost", port=5000)

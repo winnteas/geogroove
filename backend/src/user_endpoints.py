@@ -1,4 +1,4 @@
-from .endpoints_requests import get_requests
+from endpoints_requests import get_requests
 
 def get_user(user_id):
   url=f"https://api.spotify.com/v1/users/{user_id}"
