@@ -2,8 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react'
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import ProgressBar from '../components/ProgressBar3.png';
+import FormInput from '../components/FormInput';
 
-const Question3 = ({navigation}) => {
+const Question4 = ({navigation}) => {
+    const [text, setText] = React.useState("");
     return (
         <View style={styles.pageContainer}>
             <View style={styles.container}>
@@ -11,11 +13,25 @@ const Question3 = ({navigation}) => {
                     <Image source={ProgressBar} style={styles.progress}></Image>
                 </View> 
                 <StatusBar style="auto" />
-                <Text>Pick your favourite genres</Text>
+                <Text>Playlist Details</Text>
+                <View style={styles.playlistContainer}>
+                    <Image source={ProgressBar} style={styles.playlistPicture}></Image>
+                </View> 
+
+                <FormInput
+                  label="Playlist name"
+                  value={text}
+                  onChangeText={text => setText(text)}
+                />
+                <FormInput
+                  label="Playlist Description"
+                  value={text}
+                  onChangeText={text => setText(text)}
+                />
                 <Button
                     title="Continue"
                     onPress={() =>
-                        navigation.navigate('Question4')
+                        navigation.navigate('Home')
                     }
                 />
             </View>
@@ -39,8 +55,17 @@ const styles = StyleSheet.create({
     },
     barContainer: {
       top: -15,
+      width: '100%',
       alignItems: 'center'
+    },
+    playlistContainer: {
+      width: 250,
+      height: 250
+    },
+    playlistPicture: {
+      width: 250,
+      height: 250
     }
 });
 
-export default Question3
+export default Question4

@@ -5,6 +5,7 @@ import Landing from './pages/Landing';
 import Question1 from './pages/Question1';
 import Question2 from './pages/Question2';
 import Question3 from './pages/Question3';
+import Question4 from './pages/Question4';
 import Home from './pages/Home';
 import Auth from './pages/Auth';
 
@@ -34,6 +35,10 @@ export default function App() {
         <Stack.Screen
           name="Question3"
           component={Question3}
+        />
+        <Stack.Screen
+          name="Question4"
+          component={Question4}
         />
         <Stack.Screen
           name="Home"
