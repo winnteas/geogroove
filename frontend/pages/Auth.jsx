@@ -184,23 +184,20 @@ const styles = StyleSheet.create({
   },
   subheading: {
     color: '#808080',
-  },
-  subheading: {
-    color: '#808080',
     width: '75%',
-    fontSize: '15pt',
+    fontSize: 15,
     textAlign: 'center',
     marginTop: 10,
-    marginBottom: 30,
+    marginBottom: 30
   },
   image: {
     width: 150,
     height: 150,
   },
   spotifyLogo: {
-    width: '50%',
+    width: "50%",
     height: '8%',
-    marginBottom: 20,
+    marginBottom: 20
   },
   buttonContainer: {
     flex: 0,
