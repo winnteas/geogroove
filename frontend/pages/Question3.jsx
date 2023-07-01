@@ -1,13 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react'
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
 import ProgressBar from '../components/ProgressBar3.png';
 import SearchBar from '../components/SearchBar.jsx';
+import ListGenres from '../components/ListGenres.jsx';
+import ListFriends from '../components/ListFriends.jsx';
 import PrimaryButton from '../ui-kit/primary-btn';
 
 const Question3 = ({ navigation }) => {
   return (
-    <View style={styles.pageContainer}>
+    <ScrollView style={styles.pageContainer}>
       <View style={styles.container}>
         <View style={styles.barContainer}>
           <Image source={ProgressBar} style={styles.progress}></Image>
@@ -15,16 +17,18 @@ const Question3 = ({ navigation }) => {
         <StatusBar style="auto" />
         <Text style={styles.title}>Pick your favourite genres</Text>
         <SearchBar label='Find a genre' />
+        <ListGenres genres={['Pop', 'Jazz']} />
         <Text style={styles.title}>Add your friends</Text>
         <SearchBar label='Add username' />
+        <ListFriends />
         <PrimaryButton
-          title="Accept"
+          title="Continue ->"
           onPress={() =>
             navigation.navigate('Question4')
           }
         />
       </View>
-    </View >
+    </ScrollView >
   )
 }
 
@@ -36,6 +40,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 30,
   },
   progress: {
     width: 330,
