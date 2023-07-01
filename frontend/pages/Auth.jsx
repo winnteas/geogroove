@@ -1,22 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react'
 import {StyleSheet, Text, View, Button, Image } from 'react-native';
+import SecondaryButton from '../ui-kit/secondary-btn'; 
 import logo from '../assets/geogroove-transparent.gif';
+import spotify from '../assets/spotify.png';
+import PrimaryButton from '../ui-kit/primary-btn';
 
 const Landing = ({navigation}) => {
     return (
         <View style={styles.container}>
           <StatusBar style="auto" />
             <Image source={logo} style={styles.image}></Image>
-            <Text>Connect to Spotify</Text>
-            <Button
-                title="No thanks"
+
+            <Image source={spotify} style={styles.spotifyLogo}/>
+
+            <Text style={styles.title}>Connect to Spotify</Text>
+
+            <Text style={styles.subheading}>
+              Connect to your Spotify to get personalised recommendations.
+            </Text>
+            <PrimaryButton
+                title="Accept"
                 onPress={() =>
                     navigation.navigate('Question1')
                 }
             />
-            <Button
-                title="Accept"
+            <SecondaryButton
+                title="No thanks"
                 onPress={() =>
                     navigation.navigate('Question1')
                 }
@@ -32,13 +42,29 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    title: {
+      fontSize: 25,
+      marginTop: 10,
+    },
     subheading: {
       color: '#808080',
     },
+    subheading: {
+      color: '#808080',
+      width: '75%',
+      fontSize: '15pt',
+      textAlign: 'center',
+      marginTop: 10,
+      marginBottom: 30
+    },
     image: {
-        width: 100,
-        height: 100, 
+      width: 150,
+      height: 150, 
+    },
+    spotifyLogo: {
+      width: "55%",
+      height: '7.6%',
+      marginBottom: 20
     }
   });
-
 export default Landing
