@@ -37,6 +37,15 @@ conn = None
 
 ## TODO all the endpoints lol
 
+## Stub for POST request (taken from a personal proj)
+# @APP.route("/auth/logout/v1", methods=['POST'])
+# def auth_logout():
+#     data = request.get_json()
+#     ret = auth.logout(data['token'])
+    
+#     return json.dumps(ret)
+
+
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, quit_gracefully)
     APP.run(port=config.port)
