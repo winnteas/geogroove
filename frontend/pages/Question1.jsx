@@ -8,9 +8,6 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
-import AppLoading from "expo-app-loading";
-import * as Font from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
 import Walking from "../assets/walking.png";
 import Driving from "../assets/driving.png";
 import Hiking from "../assets/hiking.png";
@@ -35,8 +32,8 @@ const Question1 = ({ navigation }) => {
       <View style={styles.barContainer}>
         <Image source={ProgressBar} style={styles.progress}></Image>
       </View>
+      <Text style={styles.title}>What are you up to?</Text>
       <View style={styles.container}>
-        <Text>What are you up to?</Text>
         <View style={styles.selectBox}>
           <View style={styles.activityContainer}>
             <TouchableOpacity
@@ -101,6 +98,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
+    gap: 40,
     paddingHorizontal: 20,
   },
   selectBox: {
@@ -117,7 +115,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "40%",
+    width: "45%",
     aspectRatio: "1 / 1",
   },
   pressableContainer: {
@@ -170,9 +168,10 @@ const styles = StyleSheet.create({
     top: -15,
     alignItems: "center",
   },
-  //   question: {
-  //     fontFamily: 'gothic-a1',
-  //   },
+  title: {
+    fontSize: 25,
+    marginTop: 10,
+  },
 });
 
 export default Question1;
