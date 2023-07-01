@@ -5,7 +5,7 @@ import ProgressBar from '../components/ProgressBar3.png';
 import SearchBar from '../components/SearchBar.jsx';
 import PrimaryButton from '../ui-kit/primary-btn';
 
-const Question2 = ({ navigation }) => {
+const Question3 = ({ navigation }) => {
   return (
     <View style={styles.pageContainer}>
       <View style={styles.container}>

@@ -3,10 +3,30 @@ import React from 'react'
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import ProgressBar from '../components/ProgressBar3.png';
 import FormInput from '../components/FormInput';
+import DropDown from "react-native-paper-dropdown";
+import { useState } from 'react';
+import { DefaultTheme, Provider } from 'react-native-paper';
 
 const Question4 = ({navigation}) => {
     const [text, setText] = React.useState("");
+    const [showDropDown, setShowDropDown] = useState(false);
+    const [duration, setDuration] = useState("");
+    const durationList = [
+      {
+        label: "1 hour",
+        value: "1 hour",
+      },
+      {
+        label: "2 hour",
+        value: "2 hour",
+      },
+      {
+        label: "3 hour",
+        value: "3 hour",
+      },
+    ];
     return (
+      <Provider theme={DefaultTheme}>
         <View style={styles.pageContainer}>
             <View style={styles.container}>
                 <View style={styles.barContainer}>
@@ -28,6 +48,18 @@ const Question4 = ({navigation}) => {
                   value={text}
                   onChangeText={text => setText(text)}
                 />
+
+                <DropDown
+                  label={"Duration"}
+                  mode={"outlined"}
+                  visible={showDropDown}
+                  showDropDown={() => setShowDropDown(true)}
+                  onDismiss={() => setShowDropDown(false)}
+                  value={duration}
+                  setValue={setDuration}
+                  list={durationList}
+                />
+
                 <Button
                     title="Continue"
                     onPress={() =>
@@ -36,6 +68,7 @@ const Question4 = ({navigation}) => {
                 />
             </View>
         </View>
+      </Provider>
     )
 }
 
