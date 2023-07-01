@@ -86,6 +86,7 @@ const Landing = ({ navigation }) => {
             const result = await request.promptAsync(discovery);
             const spotifyCode = result['params']['code'];
             console.log(spotifyCode); // pass this spotifyCode into the backend route get_access_token_from_code to get access token for spotify
+
             // const params = new URLSearchParams();
             // params.append('grant_type', 'authorization_code');
             // params.append('code', spotifyCode);

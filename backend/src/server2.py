@@ -66,7 +66,10 @@ def get_access_token_from_code(code):
     sp_oauth = create_spotify_oauth()
     session.clear()
     token_info = sp_oauth.get_access_token(code)
-    return token_info['access_token']
+    data = {
+        "access_token": token_info['access_token']
+    }
+    return jsonify(data)
 
 @app.route("/redirect")
 # @cross_origin()
