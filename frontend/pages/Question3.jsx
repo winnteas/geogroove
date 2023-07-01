@@ -7,7 +7,7 @@ import ListGenres from '../components/ListGenres.jsx';
 import ListFriends from '../components/ListFriends.jsx';
 import PrimaryButton from '../ui-kit/primary-btn';
 
-const Question2 = ({ navigation }) => {
+const Question3 = ({ navigation }) => {
   return (
     <ScrollView style={styles.pageContainer}>
       <View style={styles.container}>
@@ -24,7 +24,7 @@ const Question2 = ({ navigation }) => {
         <PrimaryButton
           title="Continue ->"
           onPress={() =>
-            navigation.navigate('Question1')
+            navigation.navigate('Question4')
           }
         />
       </View>
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Question2
+export default Question3
