@@ -30,7 +30,12 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: true,
+            headerTitle: ''
+          }}
+        >
           <Stack.Screen
             name="Landing"
             component={Landing}
@@ -58,6 +63,5 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
-
   );
 }
