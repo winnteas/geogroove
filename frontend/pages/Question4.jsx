@@ -17,12 +17,12 @@ const Question4 = ({navigation}) => {
         value: "1 hour",
       },
       {
-        label: "2 hour",
-        value: "2 hour",
+        label: "2 hours",
+        value: "2 hours",
       },
       {
-        label: "3 hour",
-        value: "3 hour",
+        label: "3 hours",
+        value: "3 hours",
       },
     ];
     return (
