@@ -9,6 +9,7 @@ import PrimaryButton from '../ui-kit/primary-btn';
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 
 import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from '@env';
+import { responsiveFontSizes } from '@mui/material';
 
 const CLIENT_ID = SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = SPOTIFY_CLIENT_SECRET;
@@ -48,7 +49,9 @@ const Landing = ({ navigation }) => {
       // this must be set to false
       usePKCE: false,
       // For usage in managed apps using the proxy
-      redirectUri: redirectUri,
+      redirectUri: makeRedirectUri({
+        native: redirectUri,
+      }),
     },
     discovery
   );
@@ -79,8 +82,28 @@ const Landing = ({ navigation }) => {
         />
         <PrimaryButton
           title="Accept"
-          onPress={() => {
-            promptAsync();
+          onPress={async () => {
+            const result = await request.promptAsync(discovery);
+            const spotifyCode = result['params']['code'];
+            console.log(spotifyCode); // pass this spotifyCode into the backend route get_access_token_from_code to get access token for spotify
+            // const params = new URLSearchParams();
+            // params.append('grant_type', 'authorization_code');
+            // params.append('code', spotifyCode);
+            // params.append('redirect_uri', redirectUri);
+            // params.append('client_id', CLIENT_ID);
+            // params.append('client_secret', CLIENT_SECRET);
+
+            // const response = await fetch(
+            //   'https://accounts.spotify.com/api/token',
+            //   {
+            //     method: 'POST',
+            //     headers: {
+            //       'Content-Type': 'application/x-www-form-urlencoded',
+            //     },
+            //     body: params,
+            //   }
+            // );
+            // console.log(response['headers']['map']['setcookie']);
           }}
         />
       </View>

@@ -61,6 +61,13 @@ def auth_prompt():
     print(auth_url)
     return redirect(auth_url)
 
+@app.route("/get_access_token_from_code/<code>")
+def get_access_token_from_code(code):
+    sp_oauth = create_spotify_oauth()
+    session.clear()
+    token_info = sp_oauth.get_access_token(code)
+    return token_info['access_token']
+
 @app.route("/redirect")
 # @cross_origin()
 def redirect_page():
