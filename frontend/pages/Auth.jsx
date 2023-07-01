@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
       height: 150, 
     },
     spotifyLogo: {
-      width: "55%",
-      height: '7.6%',
+      width: "50%",
+      height: '8%',
       marginBottom: 20
     },
     buttonContainer: {
