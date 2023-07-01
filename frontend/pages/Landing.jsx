@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react'
 import {StyleSheet, Text, View, Button, Image } from 'react-native';
-import logo from '../../assets/geogroove-transparent.gif';
+import logo from '../assets/geogroove-transparent.gif'; // 
 
 const Landing = ({navigation}) => {
     return (
