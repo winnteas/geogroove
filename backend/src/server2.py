@@ -34,6 +34,11 @@ def hello_world():
 
 ##### AUTH ENDPOINTS #####
 
+# usage:
+# /auth/login
+# /auth/get_token
+# /auth/logout
+
 scope_options = "user-library-read playlist-modify-private playlist-modify-public user-top-read user-read-recently-played user-library-read user-library-modify playlist-read-private playlist-read-collaborative"
 
 def create_spotify_oauth():
