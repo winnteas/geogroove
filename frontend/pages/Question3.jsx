@@ -3,6 +3,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import ProgressBar from '../components/ProgressBar3.png';
 import SearchBar from '../components/SearchBar.jsx';
+import PrimaryButton from '../ui-kit/primary-btn';
 
 const Question2 = ({ navigation }) => {
   return (
@@ -16,10 +17,10 @@ const Question2 = ({ navigation }) => {
         <SearchBar label='Find a genre' />
         <Text style={styles.title}>Add your friends</Text>
         <SearchBar label='Add username' />
-        <Button
-          title="Continue"
+        <PrimaryButton
+          title="Accept"
           onPress={() =>
-            navigation.navigate('Home')
+            navigation.navigate('Question1')
           }
         />
       </View>

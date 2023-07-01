@@ -2,7 +2,6 @@ import * as React from 'react';
 import { TextInput, useTheme } from 'react-native-paper';
 import { View, Image } from 'react-native';
 
-
 const SearchBar = (props) => {
   const [text, setText] = React.useState("");
   const theme = useTheme();
@@ -23,12 +22,11 @@ const SearchBar = (props) => {
         textColor={theme.colors.darkGrey}
         underlineColor='black'
         activeUnderlineColor={theme.colors.darkGrey}
-        contentStyle={{ backgroundColor: theme.colors.background, paddingLeft: 50 }}
         style={{ width: '100%' }}
         left={<TextInput.Icon icon={() => (
           <Image
             source={require('../assets/search-icon.png')}
-            style={{ zIndex: 1, width: '100%', height: '100%', tintColor: theme.colors.darkGrey, backgroundColor: theme.colors.background, backfaceVisibility: false }}
+            style={{ width: 16, height: 16, tintColor: theme.colors.darkGrey }}
           />
         )} />}
       />
