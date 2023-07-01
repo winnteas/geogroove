@@ -5,7 +5,7 @@ import time
 import json
 from flask import Flask, request, send_from_directory
 from flask_cors import CORS
-from backend.src import location
+from src import location
 
 from src import config
 
