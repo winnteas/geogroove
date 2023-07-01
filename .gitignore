@@ -1,1 +1,4 @@
 .env
+.prettierignore
+.prettierrc.json
+node_modules
