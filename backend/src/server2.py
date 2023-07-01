@@ -42,8 +42,16 @@ def create_spotify_oauth():
         scope="user-library-read"
     )
 
-@app.route("/auth/prompt")
+auth_headers = {
+    "client_id": CLIENT_ID,
+    "response_type": "code",
+    "redirect_uri": FRONTEND_URL,
+    "scope": "user-library-read"
+}
+
+@app.route("/auth/login")
 def auth_prompt():
+    session.clear()
     sp_oauth = create_spotify_oauth()
     auth_url = sp_oauth.get_authorize_url()
     print(auth_url)
@@ -60,14 +68,28 @@ def redirect_page():
 
 def get_access_token():
     token_info = session.get(TOKEN_INFO, None)
-    return token_info
+    return token_info['access_token']
+
+@app.route("/auth/logout")
+def auth_logout():
+    session.pop(TOKEN_INFO, None)
+    session.clear()
+    spotify_logout_url = "https://accounts.spotify.com/logout"
+    next_url = "http://127.0.0.1:5000/"
+    logout_url = f"{spotify_logout_url}?client_id={CLIENT_ID}&redirect_uri={next_url}"
+    return redirect(logout_url)
+
+@app.route("/auth/get_token")
+def auth_get_token():
+    token_info = session.get(TOKEN_INFO, None)
+    return token_info['access_token']
 
 # @app.route("/get_access_token")
 # def get_access_token():
 #     token_info = get_access_token()
 #     return token_info['access_token']
-    # sp = spotipy.Spotify(auth=token_info['access_token'])
-    # return sp.current_user_saved_tracks(limit=50, offset=0)
+#     sp = spotipy.Spotify(auth=token_info['access_token'])
+#     return sp.current_user_saved_tracks(limit=50, offset=0)
 
 
 
