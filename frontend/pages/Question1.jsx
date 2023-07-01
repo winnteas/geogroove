@@ -13,6 +13,7 @@ import Driving from "../assets/driving.png";
 import Hiking from "../assets/hiking.png";
 import Partying from "../assets/partying.png";
 import ProgressBar from "../components/ProgressBar1.png";
+import PrimaryButton from "../ui-kit/primary-btn";
 
 const Question1 = ({ navigation }) => {
   const [selected, setSelected] = React.useState("");
@@ -38,9 +39,9 @@ const Question1 = ({ navigation }) => {
           <View style={styles.activityContainer}>
             <TouchableOpacity
               style={styles.pressableContainer}
-              onPress={() => handlePress(1)}
+              onPress={() => handlePress('Walking')}
             >
-              <View style={[styles.imageContainer, isBoxSelected(1)]}>
+              <View style={[styles.imageContainer, isBoxSelected('Walking')]}>
                 <Image source={Walking} style={styles.activity1} />
                 <Text>Walking</Text>
               </View>
@@ -49,9 +50,9 @@ const Question1 = ({ navigation }) => {
           <View style={styles.activityContainer}>
             <TouchableOpacity
               style={styles.pressableContainer}
-              onPress={() => handlePress(2)}
+              onPress={() => handlePress('Driving')}
             >
-              <View style={[styles.imageContainer, isBoxSelected(2)]}>
+              <View style={[styles.imageContainer, isBoxSelected('Driving')]}>
                 <Image source={Driving} style={styles.activity2} />
                 <Text>Driving</Text>
               </View>
@@ -60,9 +61,9 @@ const Question1 = ({ navigation }) => {
           <View style={styles.activityContainer}>
             <TouchableOpacity
               style={styles.pressableContainer}
-              onPress={() => handlePress(3)}
+              onPress={() => handlePress('Hiking')}
             >
-              <View style={[styles.imageContainer, isBoxSelected(3)]}>
+              <View style={[styles.imageContainer, isBoxSelected('Hiking')]}>
                 <Image source={Hiking} style={styles.activity3} />
                 <Text>Hiking</Text>
               </View>
@@ -71,16 +72,16 @@ const Question1 = ({ navigation }) => {
           <View style={styles.activityContainer}>
             <TouchableOpacity
               style={styles.pressableContainer}
-              onPress={() => handlePress(4)}
+              onPress={() => handlePress('Partying')}
             >
-              <View style={[styles.imageContainer, isBoxSelected(4)]}>
+              <View style={[styles.imageContainer, isBoxSelected('Partying')]}>
                 <Image source={Partying} style={styles.activity4} />
                 <Text>Partying</Text>
               </View>
             </TouchableOpacity>
           </View>
         </View>
-        <Button
+        <PrimaryButton
           title="Continue"
           onPress={() => navigation.navigate("Question2")}
         />
@@ -94,6 +95,7 @@ const styles = StyleSheet.create({
   pageContainer: {
     backgroundColor: "#fff",
     height: "100%",
+    alignItems: "center",
   },
   container: {
     alignItems: "center",

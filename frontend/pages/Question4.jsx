@@ -6,6 +6,7 @@ import FormInput from '../components/FormInput';
 import DropDown from "react-native-paper-dropdown";
 import { useState } from 'react';
 import { DefaultTheme, Provider } from 'react-native-paper';
+import PrimaryButton from '../ui-kit/primary-btn';
 
 const Question4 = ({navigation}) => {
     const [text, setText] = React.useState("");
@@ -33,34 +34,43 @@ const Question4 = ({navigation}) => {
                     <Image source={ProgressBar} style={styles.progress}></Image>
                 </View> 
                 <StatusBar style="auto" />
-                <Text>Playlist Details</Text>
+                <Text style={styles.title}>Playlist Details</Text>
                 <View style={styles.playlistContainer}>
-                    <Image source={ProgressBar} style={styles.playlistPicture}></Image>
+                    <Image  style={styles.playlistPicture}></Image>
                 </View> 
 
                 <FormInput
                   label="Playlist name"
                   value={text}
+                  style={styles.textInput}
                   onChangeText={text => setText(text)}
                 />
                 <FormInput
                   label="Playlist Description"
                   value={text}
+                  style={styles.textInput}
                   onChangeText={text => setText(text)}
                 />
+                <View
+                  style={{
+                    width: 270,
+                    marginBottom: 10
+                  }}
+                >
+                  <DropDown
+                    label={"Duration"}
+                    mode={"outlined"}
+                    visible={showDropDown}
+                    sx={styles.dropDown}
+                    showDropDown={() => setShowDropDown(true)}
+                    onDismiss={() => setShowDropDown(false)}
+                    value={duration}
+                    setValue={setDuration}
+                    list={durationList}
+                  />
+                </View>
 
-                <DropDown
-                  label={"Duration"}
-                  mode={"outlined"}
-                  visible={showDropDown}
-                  showDropDown={() => setShowDropDown(true)}
-                  onDismiss={() => setShowDropDown(false)}
-                  value={duration}
-                  setValue={setDuration}
-                  list={durationList}
-                />
-
-                <Button
+                <PrimaryButton
                     title="Continue"
                     onPress={() =>
                         navigation.navigate('Home')
@@ -77,6 +87,11 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       height: '100%'
     },
+    title: {
+      fontSize: 25,
+      marginTop: 10,
+      marginBottom: 10
+    },
     container: {
       alignItems: 'center',
       justifyContent: 'center',
@@ -86,6 +101,9 @@ const styles = StyleSheet.create({
       height: 120,
       objectFit: 'contain',
     },
+    dropDownStyle: {
+      width: 300
+    },
     barContainer: {
       top: -15,
       width: '100%',
@@ -93,11 +111,15 @@ const styles = StyleSheet.create({
     },
     playlistContainer: {
       width: 250,
-      height: 250
+      height: 250,
+      backgroundColor: "#D9D9D9"
     },
     playlistPicture: {
       width: 250,
       height: 250
+    },
+    textInput: {
+      width: 200
     }
 });
 
