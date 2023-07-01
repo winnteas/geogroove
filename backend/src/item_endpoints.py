@@ -1,4 +1,4 @@
-from endpoints_requests import get_requests
+from src.endpoints_requests import get_requests
 import json
 
 def search_item(query_str, type, market, limit, offset):

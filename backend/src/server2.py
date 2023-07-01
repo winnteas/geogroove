@@ -5,10 +5,10 @@ from flask_cors import CORS, cross_origin
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-from location import retrieve
-from item_endpoints import *
-from playlist_endpoints import *
-from user_endpoints import *
+from src.location import retrieve
+from src.item_endpoints import *
+from src.playlist_endpoints import *
+from src.user_endpoints import *
 import json
 import random
 import string
