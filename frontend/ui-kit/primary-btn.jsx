@@ -24,7 +24,7 @@ import { StyleSheet, Button, Pressable, TouchableOpacity, Text } from 'react-nat
 
 export default function PrimaryButton(props) {
     return (
-        <TouchableOpacity onPress={props.onPress} style={styles.button}>
+        <TouchableOpacity onPress={props.onPress} style={styles.button} disabled={props.disabled}>
             <Text style={styles.text}>
                 {props.title}
             </Text>

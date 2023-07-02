@@ -7,8 +7,12 @@ import DropDown from "react-native-paper-dropdown";
 import { useState } from 'react';
 import { DefaultTheme, Provider } from 'react-native-paper';
 import PrimaryButton from '../ui-kit/primary-btn';
+import { Context, useContext } from "../context";
 
 const Question4 = ({navigation}) => {
+
+    const context = useContext(Context);
+    const setters = context.setters;
     const [text, setText] = React.useState("");
     const [showDropDown, setShowDropDown] = useState(false);
     const [duration, setDuration] = useState("");
@@ -72,9 +76,10 @@ const Question4 = ({navigation}) => {
 
                 <PrimaryButton
                     title="Continue"
-                    onPress={() =>
-                        navigation.navigate('Home')
-                    }
+                    onPress={() => {
+                      navigation.navigate('Home')
+                      setters.setPlaylistDuration(duration);
+                    }}
                 />
             </View>
         </View>
