@@ -9,6 +9,8 @@ import Question4 from './pages/Question4';
 import Home from './pages/Home';
 import Auth from './pages/Auth';
 
+import { Context, initialValue } from './context';
+
 import * as React from 'react';
 import {
   MD3LightTheme as DefaultTheme,
@@ -26,46 +28,59 @@ const theme = {
   },
 };
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [activity, setActivity] = React.useState(initialValue.activity);
+  const [countryCode, setCountryCode] = React.useState(initialValue.countryCode);
+  const [playlistName, setPlaylistName] = React.useState(initialValue.playlistName);
+  const [playlistDesc, setPlaylistDesc] = React.useState(initialValue.playlistDesc);
+  const [playlistDuration, setPlaylistDuration] = React.useState(initialValue.playlistDuration);
+  
+  
+  const getters = { activity, countryCode, playlistName, playlistDesc, playlistDuration};
+  const setters = { setActivity, setCountryCode, setPlaylistName, setPlaylistDesc, setPlaylistDuration}
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: true,
-          headerTitle: ''
-        }}
-      >
-        <Stack.Screen
-          name="Landing"
-          component={Landing}
-        />
-        <Stack.Screen
-          name="Question1"
-          component={Question1}
-        />
-        <Stack.Screen
-          name="Question2"
-          component={Question2}
-        />
-        <Stack.Screen
-          name="Question3"
-          component={Question3}
-        />
-        <Stack.Screen
-          name="Question4"
-          component={Question4}
-        />
-        <Stack.Screen
-          name="Home"
-          component={Home}
-        />
-        <Stack.Screen
-          name="Auth"
-          component={Auth}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Context.Provider value={{ getters, setters }}>
+      <NavigationContainer >
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: true,
+            headerTitle: ''
+          }}
+        >
+          <Stack.Screen
+            name="Landing"
+            component={Landing}
+          />
+          <Stack.Screen
+            name="Question1"
+            component={Question1}
+          />
+          <Stack.Screen
+            name="Question2"
+            component={Question2}
+          />
+          <Stack.Screen
+            name="Question3"
+            component={Question3}
+          />
+          <Stack.Screen
+            name="Question4"
+            component={Question4}
+          />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+          />
+          <Stack.Screen
+            name="Auth"
+            component={Auth}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+      
+    </Context.Provider>
   );
 }
