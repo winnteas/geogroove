@@ -1,5 +1,6 @@
 import axios from 'axios';
 import queryString from 'query-string';
+
 export const getToken = async (data, headers) => {
   const response = await axios
     .post(
@@ -23,6 +24,17 @@ export const getCurrentUser = async (headers) => {
       console.log(error);
     });
   return response;
+};
+
+export const getPlaylist = async (playlistId, data, headers) => {
+  await axios
+    .post(
+      "https://api.spotify.com/v1/playlists/" + playlistId + data,
+      headers
+    )
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 export const createPlaylist = async (userId, data, headers) => {
