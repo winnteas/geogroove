@@ -35,13 +35,14 @@ export default function App() {
   const [token, setToken] = React.useState(initialValue.token);
   const [activity, setActivity] = React.useState(initialValue.activity);
   const [countryCode, setCountryCode] = React.useState(initialValue.countryCode);
+  const [genres, setGenres] = React.useState(initialValue.genres);
   const [playlistName, setPlaylistName] = React.useState(initialValue.playlistName);
   const [playlistDesc, setPlaylistDesc] = React.useState(initialValue.playlistDesc);
   const [playlistDuration, setPlaylistDuration] = React.useState(initialValue.playlistDuration);
 
 
-  const getters = { token, activity, countryCode, playlistName, playlistDesc, playlistDuration };
-  const setters = { setToken, setActivity, setCountryCode, setPlaylistName, setPlaylistDesc, setPlaylistDuration }
+  const getters = { token, activity, countryCode, genres, playlistName, playlistDesc, playlistDuration };
+  const setters = { setToken, setActivity, setCountryCode, setGenres, setPlaylistName, setPlaylistDesc, setPlaylistDuration }
   return (
     <Context.Provider value={{ getters, setters }}>
       <NavigationContainer >
