@@ -3,6 +3,8 @@ import React, { useEffect } from 'react'
 import { StyleSheet, Text, View, Button, Image, ScrollView } from 'react-native';
 import ProgressBar from '../components/ProgressBar2.png';
 import PrimaryButton from '../ui-kit/primary-btn';
+import { Context, useContext } from "../context";
+
 
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 // import Geolocation from 'react-native-geolocation-service';
@@ -13,7 +15,11 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 const GOOGLE_API_KEY = "AIzaSyCZLH-hzaS2XL-lBu8FR6D2I5Tgv1N37s8";
 
 const Question2 = ({navigation}) => {
+  const context = useContext(Context);
+  const setters = context.setters;
+
   const [location, setLocation] = React.useState({ latitude: -33.917348, longitude: 151.231262 })
+  const [countryCode, setCountryCode] = React.useState("AU");
   return (
       <View style={styles.pageContainer}>
           <View style={styles.container}>
@@ -37,13 +43,13 @@ const Question2 = ({navigation}) => {
                         language:'en'
                       }}
                       GooglePlacesDetailsQuery={{
-                        fields:'geometry'
+                        fields: 'address_component,name,geometry'
                       }}
 
                       onPress={(data, details = null) => {
                         const loc = details?.geometry?.location
                         if (loc !== undefined) {
-
+                          setCountryCode(details.address_components[0].short_name);
                           setLocation({
                             latitude: loc.lat, 
                             longitude: loc.lng
@@ -79,9 +85,10 @@ const Question2 = ({navigation}) => {
 
               <PrimaryButton
                 title="Continue"
-                onPress={() =>
-                    navigation.navigate('Question3')
-                }
+                onPress={() => {
+                  setters.setCountryCode(countryCode);
+                  navigation.navigate('Question3')
+                }}
               />
           </View>
       </View>

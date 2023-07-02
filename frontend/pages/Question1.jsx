@@ -14,16 +14,20 @@ import Hiking from "../assets/hiking.png";
 import Partying from "../assets/partying.png";
 import ProgressBar from "../components/ProgressBar1.png";
 import PrimaryButton from "../ui-kit/primary-btn";
+import { Context, useContext } from "../context";
 import ListActivities from "../components/ListActivities";
 
 const Question1 = ({ navigation }) => {
   const [selected, setSelected] = React.useState("");
 
-  const handlePress = (Activity) => {
-    if (selected === Activity) {
+  const context = useContext(Context);
+  const setters = context.setters;
+
+  const handlePress = (activity) => {
+    if (selected === activity) {
       setSelected(null);
     } else {
-      setSelected(Activity);
+      setSelected(activity);
     }
   };
 
@@ -64,7 +68,11 @@ const Question1 = ({ navigation }) => {
         />
         <PrimaryButton
           title="Continue"
-          onPress={() => navigation.navigate("Question2")}
+          disabled={selected === ""}
+          onPress={() => {
+            setters.setActivity(selected);
+            navigation.navigate("Question2");
+          }}
         />
         <StatusBar style="auto" />
       </View>
