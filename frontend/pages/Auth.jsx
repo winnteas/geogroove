@@ -118,7 +118,8 @@ const Landing = ({ navigation }) => {
               client_id: CLIENT_ID,
               client_secret: CLIENT_SECRET,
             };
-            getToken(data, headers);
+            getToken(data, headers)
+            
           }}
         />
       </View>

@@ -32,15 +32,16 @@ const theme = {
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [token, setToken] = React.useState(initialValue.token);
   const [activity, setActivity] = React.useState(initialValue.activity);
   const [countryCode, setCountryCode] = React.useState(initialValue.countryCode);
   const [playlistName, setPlaylistName] = React.useState(initialValue.playlistName);
   const [playlistDesc, setPlaylistDesc] = React.useState(initialValue.playlistDesc);
   const [playlistDuration, setPlaylistDuration] = React.useState(initialValue.playlistDuration);
-  
-  
-  const getters = { activity, countryCode, playlistName, playlistDesc, playlistDuration};
-  const setters = { setActivity, setCountryCode, setPlaylistName, setPlaylistDesc, setPlaylistDuration}
+
+
+  const getters = { token, activity, countryCode, playlistName, playlistDesc, playlistDuration };
+  const setters = { setToken, setActivity, setCountryCode, setPlaylistName, setPlaylistDesc, setPlaylistDuration }
   return (
     <Context.Provider value={{ getters, setters }}>
       <NavigationContainer >
@@ -80,7 +81,7 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-      
+
     </Context.Provider>
   );
 }

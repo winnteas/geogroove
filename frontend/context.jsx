@@ -1,5 +1,6 @@
 import React from "react";
 
+const initToken = undefined;
 const initActivity = "driving";
 const initCountryCode = "AU";
 const initPlaylistName = "my playlist";
@@ -7,6 +8,7 @@ const initPlaylistDesc = "";
 const initPlaylistDuration = 1;
 
 export const initialValue = {
+    token: initToken,
     activity: initActivity,
     countryCode: initCountryCode,
     playlistName: initPlaylistName,
