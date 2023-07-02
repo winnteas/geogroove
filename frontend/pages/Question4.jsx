@@ -26,6 +26,13 @@ const Question4 = ({navigation}) => {
     "driving": "Urban Driftscape"
   }
 
+  const images = {
+    "walking": SeoulStrolls,
+    "hiking": SwitzerlandHike,
+    "party": ItalyParty,
+    "driving": AucklandDrive
+  }
+
   const descriptions = {
     "walking":"Take a rhythmic journey through the bustling streets of Seoul with the \"Seoul Strolls\" playlist. Immerse yourself in the vibrant energy of South Korea's capital city as you explore its historic landmarks, modern neighbourhoods, and hidden gems on foot.",
     "hiking": "Embark on an awe-inspiring hiking expedition through the breathtaking landscapes of Switzerland with the \"Alpine Serenity\" playlist. This carefully crafted collection of harmonious melodies captures the essence of the Swiss Alps, immersing you in the tranquility and grandeur of nature as you conquer majestic peaks and traverse picturesque trails.",
@@ -66,7 +73,7 @@ const Question4 = ({navigation}) => {
                 <StatusBar style="auto" />
                 <Text style={styles.title}>Playlist Details</Text>
                 <View style={styles.playlistContainer}>
-                    <Image  style={styles.playlistPicture}></Image>
+                    <Image source={images[context.getters.activity]} style={styles.playlistPicture}></Image>
                 </View> 
 
                 <FormInput
@@ -122,7 +129,6 @@ const styles = StyleSheet.create({
     },
     title: {
       fontSize: 25,
-      marginTop: 10,
       marginBottom: 10
     },
     container: {
@@ -135,7 +141,8 @@ const styles = StyleSheet.create({
       objectFit: 'contain',
     },
     dropDownStyle: {
-      width: 300
+      width: 330,
+      height: 120
     },
     barContainer: {
       top: -15,
