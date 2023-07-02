@@ -13,7 +13,8 @@ const Question4 = ({navigation}) => {
 
     const context = useContext(Context);
     const setters = context.setters;
-    const [text, setText] = React.useState("");
+    const [playlistTitle, setPlaylistTitle] = React.useState("");
+    const [playlistDesc, setPlaylistDesc] = React.useState("");
     const [showDropDown, setShowDropDown] = useState(false);
     const [duration, setDuration] = useState("");
     const durationList = [
@@ -45,15 +46,15 @@ const Question4 = ({navigation}) => {
 
                 <FormInput
                   label="Playlist name"
-                  value={text}
+                  value={playlistTitle}
                   style={styles.textInput}
-                  onChangeText={text => setText(text)}
+                  onChangeText={text => setPlaylistTitle(text)}
                 />
                 <FormInput
                   label="Playlist Description"
-                  value={text}
+                  value={playlistDesc}
                   style={styles.textInput}
-                  onChangeText={text => setText(text)}
+                  onChangeText={text => setPlaylistDesc(text)}
                 />
                 <View
                   style={{
@@ -79,6 +80,8 @@ const Question4 = ({navigation}) => {
                     onPress={() => {
                       navigation.navigate('Home')
                       setters.setPlaylistDuration(duration);
+                      setters.setPlaylistDesc(playlistDesc);
+                      setters.setPlaylistName(playlistTitle);
                     }}
                 />
             </View>
