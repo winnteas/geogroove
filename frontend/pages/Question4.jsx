@@ -9,26 +9,51 @@ import { DefaultTheme, Provider } from 'react-native-paper';
 import PrimaryButton from '../ui-kit/primary-btn';
 import { Context, useContext } from "../context";
 
-const Question4 = ({navigation}) => {
+import SeoulStrolls from '../assets/SeoulStrolls.png';
+import SwitzerlandHike from '../assets/SwitzerlandHike.png';
+import ItalyParty from '../assets/ItalyParty.png';
+import AucklandDrive from '../assets/AucklandDrive.png';
 
-    const context = useContext(Context);
-    const setters = context.setters;
-    const [playlistTitle, setPlaylistTitle] = React.useState("");
-    const [playlistDesc, setPlaylistDesc] = React.useState("");
-    const [showDropDown, setShowDropDown] = useState(false);
-    const [duration, setDuration] = useState("");
+
+
+const Question4 = ({navigation}) => {
+  
+  
+  const names = {
+    "walking": "Seoul Strolls",
+    "hiking": "Alpine Serenity",
+    "party": "Fiesta Frenzy",
+    "driving": "Urban Driftscape"
+  }
+
+  const descriptions = {
+    "walking":"Take a rhythmic journey through the bustling streets of Seoul with the \"Seoul Strolls\" playlist. Immerse yourself in the vibrant energy of South Korea's capital city as you explore its historic landmarks, modern neighbourhoods, and hidden gems on foot.",
+    "hiking": "Embark on an awe-inspiring hiking expedition through the breathtaking landscapes of Switzerland with the \"Alpine Serenity\" playlist. This carefully crafted collection of harmonious melodies captures the essence of the Swiss Alps, immersing you in the tranquility and grandeur of nature as you conquer majestic peaks and traverse picturesque trails.",
+    "party": "Get ready to ignite the dance floor and experience the true essence of partying in Italy with the \"Dolce Vita Fiesta\" playlist. From the vibrant streets of Rome to the buzzing clubs of Milan, this curated collection of infectious beats and irresistible rhythms will transport you to the heart of Italy's legendary nightlife.",
+    "driving": "Embark on an exhilarating driving adventure through the vibrant cityscape of Auckland with the \"Urban Driftscape\" playlist. This curated collection of eclectic tunes is tailor-made to accompany your journey as you cruise along the city's scenic highways, soak in panoramic views, and immerse yourself in the urban rhythm."
+  }
+  
+  
+  const context = useContext(Context);
+  const setters = context.setters;
+
+  const [playlistTitle, setPlaylistTitle] = React.useState(names[context.getters.activity]);
+  const [playlistDesc, setPlaylistDesc] = React.useState(descriptions[context.getters.activity]);
+
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [duration, setDuration] = useState("");
     const durationList = [
       {
         label: "1 hour",
-        value: "1 hour",
+        value: 1,
       },
       {
         label: "2 hours",
-        value: "2 hours",
+        value: 2,
       },
       {
         label: "3 hours",
-        value: "3 hours",
+        value: 3,
       },
     ];
     return (
@@ -48,13 +73,13 @@ const Question4 = ({navigation}) => {
                   label="Playlist name"
                   value={playlistTitle}
                   style={styles.textInput}
-                  onChangeText={text => setPlaylistTitle(text)}
+                  onChangeText={setPlaylistTitle}
                 />
                 <FormInput
                   label="Playlist Description"
                   value={playlistDesc}
                   style={styles.textInput}
-                  onChangeText={text => setPlaylistDesc(text)}
+                  onChangeText={setPlaylistDesc}
                 />
                 <View
                   style={{
@@ -78,10 +103,10 @@ const Question4 = ({navigation}) => {
                 <PrimaryButton
                     title="Continue"
                     onPress={() => {
-                      navigation.navigate('Home')
-                      setters.setPlaylistDuration(duration);
                       setters.setPlaylistDesc(playlistDesc);
                       setters.setPlaylistName(playlistTitle);
+                      setters.setPlaylistDuration(duration);
+                      navigation.navigate('Home');
                     }}
                 />
             </View>

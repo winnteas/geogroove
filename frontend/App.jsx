@@ -42,7 +42,7 @@ export default function App() {
   const getters = { activity, countryCode, playlistName, playlistDesc, playlistDuration};
   const setters = { setActivity, setCountryCode, setPlaylistName, setPlaylistDesc, setPlaylistDuration}
   return (
-    <Context.Provider value={{ getters, setters }}>
+    <Context.Provider value={{ getters, setters, }}>
       <NavigationContainer >
         <Stack.Navigator
           screenOptions={{
