@@ -1,7 +1,10 @@
 import axios from 'axios';
 import queryString from 'query-string';
+import { Context, useContext } from "../context";
 
 export const getToken = async (data, headers) => {
+  const context = useContext(Context);
+  const setters = context.setters;
   const response = await axios
     .post(
       "https://accounts.spotify.com/api/token",
@@ -11,7 +14,7 @@ export const getToken = async (data, headers) => {
     .catch((error) => {
       console.log(error);
     });
-  setAuthToken(response['data']['access_token'])
+  setters.setToken(response['data']['access_token'])
 };
 
 export const getCurrentUser = async (headers) => {
