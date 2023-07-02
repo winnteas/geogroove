@@ -17,7 +17,8 @@ const Home = ({ navigation }) => {
       <Text>Your Activity: {getters.activity}</Text>
       <Text>YOur country code: {getters.countryCode}</Text>
       <Text>Playlist Name: {getters.playlistName}</Text>
-      <Text>Playlist desc: {getters.playlistDesc}</Text>
+      <Text>Genres {getters.genres.map(item => item.toString()).join(', ')}</Text>
+      <Text>Playlist desc {getters.playlistDesc}</Text>
       <Text>Your playlist duration {getters.playlistDuration}</Text>
     </View>
   );

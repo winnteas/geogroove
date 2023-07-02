@@ -20,7 +20,7 @@ const Landing = ({ navigation }) => {
   const [auth_token, setAuthToken] = useState(undefined);
   const authEndPoint = 'https://accounts.spotify.com/authorize';
   // NEEDS TO BE CHANGED ACCORDING TO YOUR RUN OF NPX EXPO START --TUNNEL
-  const redirectUri = 'exp://su_kz5g.anonymous.19000.exp.direct';
+  const redirectUri = 'exp://0jpi8by.anonymous.19000.exp.direct';
   const scopes = [
     'user-library-read',
     'playlist-modify-private',
@@ -118,7 +118,8 @@ const Landing = ({ navigation }) => {
               client_id: CLIENT_ID,
               client_secret: CLIENT_SECRET,
             };
-            getToken(data, headers);
+            getToken(data, headers)
+            
           }}
         />
       </View>

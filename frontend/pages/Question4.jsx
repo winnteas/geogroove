@@ -118,8 +118,8 @@ const Question4 = ({navigation}) => {
                 />
             </View>
         </View>
-      </Provider>
-    )
+    </Provider>
+  )
 }
 
 const styles = StyleSheet.create({
