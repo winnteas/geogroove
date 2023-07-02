@@ -29,6 +29,18 @@ export const getCurrentUser = async (headers) => {
   return response;
 };
 
+export const getGenres = async (headers) => {
+  const response = await axios
+    .get(
+      "https://api.spotify.com/v1/recommendations/available-genre-seeds",
+      headers
+    )
+    .catch((error) => {
+      console.log(error);
+    });
+  return response;
+}
+
 export const getPlaylist = async (playlistId, data, headers) => {
   await axios
     .post(

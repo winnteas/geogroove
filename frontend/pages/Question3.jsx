@@ -6,8 +6,14 @@ import SearchBar from '../components/SearchBar.jsx';
 import ListGenres from '../components/ListGenres.jsx';
 import ListFriends from '../components/ListFriends.jsx';
 import PrimaryButton from '../ui-kit/primary-btn';
+import { Context, useContext } from "../context";
 
 const Question3 = ({ navigation }) => {
+  const context = useContext(Context);
+  const setters = context.setters;
+
+  const [selectedGenres, setSelectedGenres] = React.useState([]);
+
   return (
     <ScrollView style={styles.pageContainer}>
       <View style={styles.container}>
@@ -17,15 +23,16 @@ const Question3 = ({ navigation }) => {
         <StatusBar style="auto" />
         <Text style={styles.title}>Pick your favourite genres</Text>
         <SearchBar label='Find a genre' />
-        <ListGenres genres={['Pop', 'Jazz']} />
+        <ListGenres genres={['Pop', 'Jazz', 'K-pop', 'Rock', 'Classical']} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
         <Text style={styles.title}>Add your friends</Text>
         <SearchBar label='Add username' />
         <ListFriends />
         <PrimaryButton
           title="Continue ->"
-          onPress={() =>
+          onPress={() => {
+            setters.setGenres(selectedGenres);
             navigation.navigate('Question4')
-          }
+          }}
         />
       </View>
     </ScrollView >
