@@ -70,7 +70,7 @@ const Question1 = ({ navigation }) => {
           title="Continue"
           disabled={selected === ""}
           onPress={() => {
-            setters.setActivity(selected);
+            setters.setActivity(selected.toLowerCase());
             navigation.navigate("Question2");
           }}
         />

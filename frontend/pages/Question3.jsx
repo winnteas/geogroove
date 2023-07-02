@@ -28,7 +28,7 @@ const Question3 = ({ navigation }) => {
         <SearchBar label='Add username' />
         <ListFriends />
         <PrimaryButton
-          title="Continue ->"
+          title="Continue"
           onPress={() => {
             setters.setGenres(selectedGenres);
             navigation.navigate('Question4')
