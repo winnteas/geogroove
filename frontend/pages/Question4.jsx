@@ -43,6 +43,8 @@ const Question4 = ({navigation}) => {
   
   const context = useContext(Context);
   const setters = context.setters;
+  
+  const authEndPoint = 'https://accounts.spotify.com/authorize';
 
   const [playlistTitle, setPlaylistTitle] = React.useState(names[context.getters.activity]);
   const [playlistDesc, setPlaylistDesc] = React.useState(descriptions[context.getters.activity]);
@@ -113,8 +115,26 @@ const Question4 = ({navigation}) => {
                       setters.setPlaylistDesc(playlistDesc);
                       setters.setPlaylistName(playlistTitle);
                       setters.setPlaylistDuration(duration);
-                      navigation.navigate('Home');
-                    }}
+                      // navigation.navigate('Home');
+                        fetch(`https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg`, {
+                          method: 'GET',
+                          headers: {
+                            'Authorization': `Bearer ${context.getters.token}`,
+                            'Content-Type': 'application/json'
+                          }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                          // Handle the response data
+                          console.log(data);
+                          console.log('the token is', context.getters.token);
+
+                        })
+                        .catch(error => {
+                          // Handle any errors
+                          console.error('Error:', error);
+                        });
+                      }}
                 />
             </View>
         </View>
